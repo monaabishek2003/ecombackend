@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 
 const ProductSchema = new mongoose.Schema({
-    product_id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     supplier_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier', required: true },
     name: { type: String, required: true },
     descriptive_name: { type: String },
@@ -14,7 +13,7 @@ const ProductSchema = new mongoose.Schema({
     ratings: { type: Number, min: 0, max: 5 },
     manufacturer: { type: String },
     quantity: { type: Number, required: true },
-    category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+    category_id: { type: String, required: true },
     specifications: [
       {
         specification_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Specification', required: true },

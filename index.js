@@ -5,7 +5,16 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import Supplier from "./models/Supplier.js";
+
+import productRoutes from "./routes/productRoutes.js"
+import specificationRoutes from "./routes/specificationRoutes.js"
+import categoryRoutes from "./routes/categoryRoutes.js"
+import supplierRoutes from "./routes/supplierRoutes.js"
+
+import { categories,specifications,products } from "./data/data.js";
+import Category from "./models/Category.js";
+import Specification from "./models/Specification.js";
+import Product from "./models/Product.js";
 
 const app = express()
 dotenv.config();
@@ -17,12 +26,15 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-const port =  3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.get("/",(req,res)=>{
+  res.send("helo")
+})
 
+app.use('/products', productRoutes);
+app.use('/specs',specificationRoutes)
+app.use('/categories', categoryRoutes);
+app.use('/supplier',supplierRoutes)
 
 const PORT = process.env.PORT || 6001;
 mongoose
@@ -31,3 +43,6 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+
+  // Prodduct.insertMany(productds)

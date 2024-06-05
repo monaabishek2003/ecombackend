@@ -7,7 +7,7 @@ const CategorySchema = new Schema({
     parent_category: { type: Schema.Types.ObjectId, ref: 'Category', default: null },
     sub_categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
     child_categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }],
-    category_id: { type: String, unique: true }
+    category_id: { type: String }
 });
 const Category = mongoose.model('Category', CategorySchema);
 export default Category;

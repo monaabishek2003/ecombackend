@@ -8,7 +8,7 @@ const SpecificationSchema = new mongoose.Schema({
       high: { type: Number }
     },
     list_of_values: [String],
-    category_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }
+    category_id: { type: String, required: true }
 });
   
 const Specification = mongoose.model('Specification', SpecificationSchema);

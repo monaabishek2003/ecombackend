@@ -1,8 +1,9 @@
 import express from 'express';
-import { createSupplier } from '../controllers/supplierController.js';
+import { registerSupplier, loginSupplier } from '../controllers/supplierController.js';
 
 const router = express.Router();
 
-router.post('/add', createSupplier);
+router.post('/register', registerSupplier);
+router.post('/login', loginSupplier);
 
 export default router;

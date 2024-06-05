@@ -11,6 +11,7 @@ import specificationRoutes from "./routes/specificationRoutes.js"
 import categoryRoutes from "./routes/categoryRoutes.js"
 import supplierRoutes from "./routes/supplierRoutes.js"
 import queryRoutes from "./routes/queryRoutes.js"
+import chatRoutes from "./routes/chatRoutes.js"
 
 // import { categories,specifications,products } from "./data/data.js";
 // import Category from "./models/Category.js";
@@ -36,7 +37,8 @@ app.use('/products', productRoutes);
 app.use('/specs',specificationRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/supplier',supplierRoutes);
-app.use('/queries',queryRoutes)
+app.use('/queries',queryRoutes);
+app.use('/chat', chatRoutes);
 
 const PORT = process.env.PORT || 6001;
 mongoose

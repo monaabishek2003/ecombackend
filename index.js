@@ -10,11 +10,12 @@ import productRoutes from "./routes/productRoutes.js"
 import specificationRoutes from "./routes/specificationRoutes.js"
 import categoryRoutes from "./routes/categoryRoutes.js"
 import supplierRoutes from "./routes/supplierRoutes.js"
+import queryRoutes from "./routes/queryRoutes.js"
 
-import { categories,specifications,products } from "./data/data.js";
-import Category from "./models/Category.js";
-import Specification from "./models/Specification.js";
-import Product from "./models/Product.js";
+// import { categories,specifications,products } from "./data/data.js";
+// import Category from "./models/Category.js";
+// import Specification from "./models/Specification.js";
+// import Product from "./models/Product.js";
 
 const app = express()
 dotenv.config();
@@ -32,9 +33,10 @@ app.get("/",(req,res)=>{
 })
 
 app.use('/products', productRoutes);
-app.use('/specs',specificationRoutes)
+app.use('/specs',specificationRoutes);
 app.use('/categories', categoryRoutes);
-app.use('/supplier',supplierRoutes)
+app.use('/supplier',supplierRoutes);
+app.use('/queries',queryRoutes)
 
 const PORT = process.env.PORT || 6001;
 mongoose

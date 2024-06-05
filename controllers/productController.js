@@ -85,7 +85,7 @@ export const filterProducts = async (req, res) => {
     // Sort the filtered products by the number of matches in descending order
     filteredProducts.sort((a, b) => b.matches - a.matches);
 
-    res.json(filteredProducts.map((fp) => fp.product));
+    res.status(200).json(filteredProducts.map((fp) => fp.product));
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal Server Error" });
@@ -102,9 +102,9 @@ export const getProducts = async (req, res) => {
     } else if (supplier_id) {
       filter.supplier_id = supplier_id;
     }
-    console.log(filter);
+    // console.log(filter);
     const products = await Product.find(filter);
-    res.json(products);
+    res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -124,7 +124,7 @@ export const searchProducts = async (req, res) => {
     if (!products) {
       return res.status(404).json({ error: "No products found" });
     }
-    res.json(products);
+    res.status(200).json(products);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

@@ -63,7 +63,7 @@ export const loginSupplier = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign(
       { email: existingSupplier.email, id: existingSupplier._id },
-      "your_secret_key",
+      'your_secret_key',
       { expiresIn: "1h" }
     );
 

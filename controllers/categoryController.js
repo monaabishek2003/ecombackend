@@ -7,15 +7,12 @@ const buildCategoryTree = (categories) => {
   categories.forEach(category => {
     categoryMap[category._id] = { ...category._doc, nestedcategory: [] };
   });
-
   const tree = [];
-
+  var i = 5
   categories.forEach(category => {
     if (category.parent_category) {
       const parentCategory = categoryMap[category.parent_category];
-      if (parentCategory) {
-        parentCategory.nestedcategory.push(categoryMap[category._id]);
-      }
+      parentCategory.nestedcategory.push(categoryMap[category._id]);
     } else {
       tree.push(categoryMap[category._id]);
     }
@@ -27,11 +24,8 @@ const buildCategoryTree = (categories) => {
 
 export const getCategories = async (req, res) => {
   try {
-    const categories = await Category.find()
-      .populate('sub_categories')
-      .populate('child_categories');
+    const categories = await Category.find();
     const categoryTree = buildCategoryTree(categories);
-    console.log(categories)
     res.status(200).json(categoryTree);
   } catch (error) {
     res.status(500).json({ message: error.message });

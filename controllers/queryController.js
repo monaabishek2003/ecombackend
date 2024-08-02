@@ -21,7 +21,7 @@ export const postQuery = async (req, res) => {
     }
 
     await newQuery.save();
-    res.status(201).json({ message: 'Query posted successfully', queryId: newQuery._id });
+    res.status(201).json({ message: 'Query posted successfully', queryId: newQuery });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -48,12 +48,12 @@ export const getQueries = async (req, res) => {
   const { productId,supplierId } = req.query;
   const filter = {}
   if (supplierId) {
-    filter.product = supplierId;
+    filter.supplier = supplierId;
   } else if (productId) {
-    filter.supplier = productId;
+    filter.product = productId;
   }
   try {
-    const queries = await Query.find(filter).populate('user').populate('responses.supplier');
+    const queries = await Query.find(filter)
     res.status(200).json(queries);
   } catch (error) {
     res.status(500).json({ message: error.message });

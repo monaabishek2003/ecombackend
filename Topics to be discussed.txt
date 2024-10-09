@@ -1,0 +1,19 @@
+Topics to be discussed:
+
+1.Product searching and filtering -P1 -- mona
+2.Order tracking and History -P1
+
+3.Product listing and management -P1 --mona
+8.Inventory and Order management -P1
+
+
+
+5.Customer Support and review -P2
+6.User ans Supplier Support -P2 --mona
+
+4.Content Management System -P4 -- both
+7.sales and analytics -P4 -- both
+
+
+9,10, user authentication 
+ supplier authentication -P4 --mona
